@@ -1,0 +1,38 @@
+<h3>Add Employee</h3>
+
+<div>
+    <h4 class="error">{{message}}</h4>
+    <form (ngSubmit)="addEmployee(employeeForm)" #employeeForm="ngForm">
+        <div ngModelGroup="employee">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" ngModel #employeeName="ngModel" name="name" required />
+                <div class="error mt-2" *ngIf="(employeeName.touched  || message) && employeeName.invalid">
+                    Name of employee is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Salary</label>
+                <input type="number" class="form-control" ngModel name="salary" #employeeSalary="ngModel" required>
+                <div class="error mt-2" *ngIf="(employeeSalary.touched || message) && employeeSalary.invalid">
+                    Employees salary is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Number of leaves</label>
+                <input type="number" class="form-control" ngModel name="leaves" #employeeLeaves="ngModel" required>
+                <div class="error mt-2" *ngIf="(employeeLeaves.touched || message) && employeeLeaves.invalid">
+                    Number of leaves is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Experience</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ngModel #employeeExperience="ngModel" name="experience" required ></textarea>
+                <div class="error mt-2" *ngIf="(employeeExperience.touched  || message) && employeeExperience.invalid">
+                    Experience is required
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Add Employee</button>
+    </form>
+</div>
